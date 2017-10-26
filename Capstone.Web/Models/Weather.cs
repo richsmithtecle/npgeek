@@ -12,5 +12,12 @@ namespace Capstone.Web.Models
         public int Low { get; set; }
         public int High { get; set; }
         public string Forecast { get; set; }
+
+        public double CalculateCelsius(int temp)
+        {
+            double cTemp;
+            cTemp =(temp - 32) * (5.0 / 9);
+            return (int)cTemp;
+        }
     }
 }

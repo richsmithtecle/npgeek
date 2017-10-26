@@ -22,7 +22,22 @@ namespace Capstone.Web.Controllers
             Park p = dal.GetPark(id);
             List<Weather> w = dal.GetWeather(id);
             PW pw = new PW(p, w);
+
             return View("Detail", pw);
+
+        }
+
+        
+        public ActionResult ShowCelsius(string id)
+        {
+            Session["TempPref"] = "Celsius";
+            return RedirectToAction("Detail", "Park", new { id = id });
+        }
+
+        public ActionResult ShowFahrenheit(string id)
+        {
+            Session["TempPref"] = "Fahrenheit";
+            return RedirectToAction("Detail", "Park", new { id = id });
         }
 
     }
