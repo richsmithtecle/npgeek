@@ -4,86 +4,110 @@
 
 @{
     ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detail</h2>
+@*<h2>Detail</h2>*@
+<div class="container">
+    <div class="row">
 
-
-<div>
-    <div><img src="@Url.Content("~/Content/img/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" /></div>
-    <p>@Model.ParkName</p>
-    <p>@Model.State</p>
-    <p>@Model.Acreage</p>
-    <p>@Model.ElevationInFeet</p>
-    <p>@Model.MilesOfTrail</p>
-    <p>@Model.NumberOfCampsites</p>
-    <p>@Model.Climate</p>
-    <p>@Model.YearFounded</p>
-    <p>@Model.AnnualVisitorCount</p>
-    <p>@Model.InspirationalQuote</p>
-    <p>@Model.InspirationalQuoteSource</p>
-    <p>@Model.EntryFee</p>
-    <p>@Model.NumberOfAnimalSpecies</p>
-    <p>@Model.ParkDescription</p>
-</div>
-
-<div>
-    @foreach (var w in Model.Weather)
-    {
-        <div><img src="@Url.Content("~/Content/img/" + w.Forecast + ".png")" alt="@w.Forecast" /></div>      
-        if ((Session["TempPref"] as String) == "Celsius")
-        {
-            <div>High: @w.CalculateCelsius(w.High)</div>
-            <div>Low: @w.CalculateCelsius(w.Low)</div>
+        <div class="col-xs-12">
+            <h1 class="park-detail-title text-center">@Model.ParkName</h1>
+        </div>
+            <div class="col-xs-12 col-sm-6">
+                <img src="@Url.Content("~/Content/img/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" />
+            </div>
+        <div class="col-xs-12 col-sm-6">
             
-        }
-        else
-        {
-            <div>High: @w.High</div>
-            <div>Low: @w.Low</div>
-           
-        }
+            <p><span class="bold">Acreage: </span>@Model.Acreage</p>
+            <p><span class="bold">Elevation in Feet: </span>@Model.ElevationInFeet</p>
+            <p><span class="bold">Miles of Trail: </span>@Model.MilesOfTrail</p>
+            <p><span class="bold">Number of Campsites:</span> @Model.NumberOfCampsites</p>
+            <p><span class="bold">Climate: </span>@Model.Climate</p>
+            <p><span class="bold">State: </span>@Model.State</p>
+            <p><span class="bold">Year Founded: </span>@Model.YearFounded</p>
+            <p><span class="bold">Annual Vistor Count: </span>@Model.AnnualVisitorCount</p>
+            <p><span class="bold">Inspirational Quote: </span>@Model.InspirationalQuote</p>
+            <p><span class="bold">Inspirational Quote Source: </span>@Model.InspirationalQuoteSource</p>
+            <p><span class="bold">Entry Fee: </span>@Model.EntryFee</p>
+            <p><span class="bold">Number Of Animal Species: </span>@Model.NumberOfAnimalSpecies</p>
+        </div>
+
+        <div class="col-xs-12">
+            <p class="lead park-desc">@Model.ParkDescription</p>
+        </div>
+
+        <div class="well">
+            @foreach (var w in Model.Weather)
+            {
+                <div class="col-xs-12 col-sm-2">
+                    <div class="thumbnail">
+                    <img src="@Url.Content("~/Content/img/" + w.Forecast + ".png")" alt="@w.Forecast" />
+
+                    @if ((Session["TempPref"] as String) == "Celsius")
+                    {
+                    <h4 class="text-center">High: @w.CalculateCelsius(w.High)</h4>
+                    <h4 class="text-center">Low: @w.CalculateCelsius(w.Low)</h4>
+
+                    }
+                    else
+                    {
+                    <h4 class="text-center">High: @w.High</h4>
+                    <h4 class="text-center">Low: @w.Low</h4>
+
+                    }
 
 
 
 
-        if (w.Forecast == "sunny" || w.Forecast == "partly cloudy")
-        {
-            <h5> Pack Sunblock </h5>
-        }
-        else if (w.Forecast == "snow")
-        {
-            <h5> Pack Snowshoes </h5>
-        }
-        else if (w.Forecast == "rain")
-        {
-            <h5> Pack Raingear and Waterproof Shoes</h5>
-        }
-        else if (w.Forecast == "thunderstorms")
-        {
-            <h5> Seek Shelter; Avoid Hiking on Exposed Ridges</h5>
-        }
+                    @if (w.Forecast == "sunny" || w.Forecast == "partly cloudy")
+                    {
+                    <p class="text-center"> Pack Sunblock </p>
+                    }
+                    else if (w.Forecast == "snow")
+                    {
+                    <p class="text-center"> Pack Snowshoes </p>
+                    }
+                    else if (w.Forecast == "rain")
+                    {
+                    <p class="text-center"> Pack Raingear and Waterproof Shoes</p>
+                    }
+                    else if (w.Forecast == "thunderstorms")
+                    {
+                    <p class="text-center"> Seek Shelter; Avoid Hiking on Exposed Ridges</p>
+                    }
 
 
-        if (w.High >= 75)
-        {
-            <h4>Bring Extra Water</h4>
-        }
-        if (w.Low <= 20)
-        {
-            <h4>Danger! Extreme risk of exposure due to low temp!</h4>
-        }
-        if (w.High - w.Low >= 20)
-        {
-            <h4> Wear breathable layers</h4>
-        }
-    }
-    @if ((Session["TempPref"] as String) == "Celsius")
-    {
-        <a href="@Url.Action("ShowFahrenheit", "Park", new { id = Model.ParkCode })">Show Fahrenheit</a>
-    }
-    else
-    {
-        <a href="@Url.Action("ShowCelsius", "Park", new { id = Model.ParkCode })">Show Celsius</a>
-    }
+                    @if (w.High >= 75)
+                    {
+                    <p class="text-center">Bring Extra Water</p>
+                    }
+                    @if (w.Low <= 20)
+                    {
+                    <p class="text-center">Danger! Extreme risk of exposure due to low temp!</p>
+                    }
+                    @if (w.High - w.Low >= 20)
+                    {
+                    <p class="text-center"> Wear breathable layers</p>
+                    }
+                    
+                </div>
+               </div>
+            }
+        </div>
+
+        @*<div class="row">
+            <div class="col-xs-12 text-center">
+                @if ((Session["TempPref"] as String) == "Celsius")
+            {
+                    <a href="@Url.Action("ShowFahrenheit", "Park", new { id = Model.ParkCode })">Show Fahrenheit</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("ShowCelsius", "Park", new { id = Model.ParkCode })">Show Celsius</a>
+                }
+            </div>
+        </div>*@
+
+    </div>
 </div>

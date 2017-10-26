@@ -4,9 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
 
-@foreach(var p in Model)
+<div class="jumbotron index-hero">
+    <h1 class="text-center">National parks system</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var p in Model)
+        {
+            <div class="parks col-xs-12 col-sm-6 col-md-4">
+                <a href="@Url.Action("Detail", "Park", new { id = p.ParkCode })">
+                    <img class="park-img img-responsive img-rounded" src="@Url.Content("~/Content/img/" + p.ParkCode + ".jpg")" alt="@p.ParkName" />
+                    <h4 class="text-center">@p.ParkName</h4>
+                </a>
+                <p class="text-justify">@p.ParkDescription</p>
+            </div>
+        }
+    </div>
+</div>
+
+@*@foreach(var p in Model)
 {
     <div>
         <a href="@Url.Action("Detail", "Park", new {id = p.ParkCode})">
@@ -15,4 +35,4 @@
         </a>
         <div>@p.ParkDescription</div>
     </div>
-}
+}*@

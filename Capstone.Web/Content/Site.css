@@ -16,3 +16,62 @@ textarea {
     max-width: 280px;
 }
 
+.index-hero {
+    min-height: 550px;
+    background-image: url('img/home-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+    .index-hero h1 {
+        padding-top: 13%;
+        text-transform: uppercase;
+    }
+
+.parks {
+    /*height: 350px;*/
+}
+
+    .parks p {
+        width: auto;
+        height: 3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+/* navbar */
+.navbar-default {
+    background-color: forestgreen;
+    border-color: forestgreen;
+}
+    /* Title */
+    .navbar-default .navbar-brand {
+        color: forestgreen;
+    }
+
+.navbar-inverse {
+    background-color: #1a3e07;
+}
+
+.bold {
+    font-weight: bold;
+}
+.park-detail-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.park-desc {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .parks {
+        height: 350px;
+    }
+}
