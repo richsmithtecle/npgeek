@@ -5,38 +5,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TakeSurvey</h2>
-
-<form action="@Url.Action("TakeSurvey", "Survey")" method="post">
-    <div>
-        @Html.LabelFor(m => m.EmailAddress)
-        @Html.TextBoxFor(m => m.EmailAddress)
-        @Html.ValidationMessageFor(m => m.EmailAddress)
-    </div>
-    <div>
-        <label for="Park"> State of Residence</label>
-        @Html.DropDownListFor(m => m.StateSurvey, Model.States)
-        @Html.ValidationMessageFor(m => m.StateSurvey)
-
-
-    </div>
-    <div>
-        <label for="Park">Activity Level</label>
-        @Html.RadioButtonFor(m => m.ActivityLevel, "inactive", false) inactive
-        @Html.RadioButtonFor(m => m.ActivityLevel, "sedentary", false) sedentary
-        @Html.RadioButtonFor(m => m.ActivityLevel, "active", false) active
-        @Html.RadioButtonFor(m => m.ActivityLevel, "extremely active", false) extremely active
-        @Html.ValidationMessageFor(m => m.ActivityLevel)
+<div class="jumbotron survey-hero">
+    <h1 class="text-center">#VOTEYOURPARK</h1>
+</div>
+<div class="container">
+    <div class="row">
+        
+    <form action="@Url.Action("TakeSurvey", "Survey")" method="post">
+        <div>
+            @Html.LabelFor(m => m.EmailAddress)
+            @Html.TextBoxFor(m => m.EmailAddress)
+            @Html.ValidationMessageFor(m => m.EmailAddress)
+        </div>
+        <div>
+            <label for="Park"> State of Residence</label>
+            @Html.DropDownListFor(m => m.StateSurvey, Model.States)
+            @Html.ValidationMessageFor(m => m.StateSurvey)
 
 
-    </div>
-    <div>
-        <label for="Park">Favorite Park</label>
-        @Html.DropDownListFor(m => m.ParkCodeSurvey, Model.ParkNames)
-        @Html.ValidationMessageFor(m => m.ParkCodeSurvey)
+        </div>
+        <div>
+            <label for="Park">Favorite Park</label>
+            @Html.DropDownListFor(m => m.ParkCodeSurvey, Model.ParkNames)
+            @Html.ValidationMessageFor(m => m.ParkCodeSurvey)
+        </div>
+        <div>
+            <label for="Park">Activity Level</label>
+            @Html.RadioButtonFor(m => m.ActivityLevel, "inactive", false) inactive
+            @Html.RadioButtonFor(m => m.ActivityLevel, "sedentary", false) sedentary
+            @Html.RadioButtonFor(m => m.ActivityLevel, "active", false) active
+            @Html.RadioButtonFor(m => m.ActivityLevel, "extremely active", false) extremely active
+            @Html.ValidationMessageFor(m => m.ActivityLevel)
 
-    </div>
 
-    <button>Submit!</button>
+        </div>
+      
 
-</form>
+        <button>Submit!</button>
+
+    </form>
+</div>
+</div>

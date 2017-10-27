@@ -14,11 +14,11 @@
         <div class="col-xs-12">
             <h1 class="park-detail-title text-center">@Model.ParkName</h1>
         </div>
-            <div class="col-xs-12 col-sm-6">
-                <img src="@Url.Content("~/Content/img/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" />
-            </div>
+        <div class="col-xs-12 col-md-6">
+            <img class="img-responsive" src="@Url.Content("~/Content/img/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" />
+        </div>
         <div class="col-xs-12 col-sm-6">
-            
+
             <p><span class="bold">Acreage: </span>@Model.Acreage</p>
             <p><span class="bold">Elevation in Feet: </span>@Model.ElevationInFeet</p>
             <p><span class="bold">Miles of Trail: </span>@Model.MilesOfTrail</p>
@@ -37,66 +37,72 @@
             <p class="lead park-desc">@Model.ParkDescription</p>
         </div>
 
-        <div class="well">
+    </div>
+
+    <div class="well">
+        <div class="row">
+            <div class="col-xs-1"></div>
             @foreach (var w in Model.Weather)
             {
                 <div class="col-xs-12 col-sm-2">
                     <div class="thumbnail">
-                    <img src="@Url.Content("~/Content/img/" + w.Forecast + ".png")" alt="@w.Forecast" />
+                        <img src="@Url.Content("~/Content/img/" + w.Forecast + ".png")" alt="@w.Forecast" />
 
-                    @if ((Session["TempPref"] as String) == "Celsius")
-                    {
-                    <h4 class="text-center">High: @w.CalculateCelsius(w.High)</h4>
-                    <h4 class="text-center">Low: @w.CalculateCelsius(w.Low)</h4>
+                        @if ((Session["TempPref"] as String) == "Celsius")
+                        {
+                            <h4 class="text-center">High: @w.CalculateCelsius(w.High)</h4>
+                            <h4 class="text-center">Low: @w.CalculateCelsius(w.Low)</h4>
 
-                    }
-                    else
-                    {
-                    <h4 class="text-center">High: @w.High</h4>
-                    <h4 class="text-center">Low: @w.Low</h4>
+                        }
+                        else
+                        {
+                            <h4 class="text-center">High: @w.High</h4>
+                            <h4 class="text-center">Low: @w.Low</h4>
 
-                    }
-
-
+                        }
 
 
-                    @if (w.Forecast == "sunny" || w.Forecast == "partly cloudy")
-                    {
-                    <p class="text-center"> Pack Sunblock </p>
-                    }
-                    else if (w.Forecast == "snow")
-                    {
-                    <p class="text-center"> Pack Snowshoes </p>
-                    }
-                    else if (w.Forecast == "rain")
-                    {
-                    <p class="text-center"> Pack Raingear and Waterproof Shoes</p>
-                    }
-                    else if (w.Forecast == "thunderstorms")
-                    {
-                    <p class="text-center"> Seek Shelter; Avoid Hiking on Exposed Ridges</p>
-                    }
+
+                        @if (w.High >= 75)
+                        {
+                            <p class="text-center">Bring Extra Water</p>
+                        }
+                        @if (w.Low <= 20)
+                        {
+                            <p class="text-center">Danger! Extreme risk of exposure due to low temp!</p>
+                        }
+                        @if (w.High - w.Low >= 20)
+                        {
+                            <p class="text-center"> Wear breathable layers</p>
+                        }
 
 
-                    @if (w.High >= 75)
-                    {
-                    <p class="text-center">Bring Extra Water</p>
-                    }
-                    @if (w.Low <= 20)
-                    {
-                    <p class="text-center">Danger! Extreme risk of exposure due to low temp!</p>
-                    }
-                    @if (w.High - w.Low >= 20)
-                    {
-                    <p class="text-center"> Wear breathable layers</p>
-                    }
-                    
+                        @if (w.Forecast == "sunny" || w.Forecast == "partly cloudy")
+                        {
+                            <p class="text-center gear-suggestion"> Pack Sunblock </p>
+                        }
+                        else if (w.Forecast == "snow")
+                        {
+                            <p class="text-center gear-suggestion"> Pack Snowshoes </p>
+                        }
+                        else if (w.Forecast == "rain")
+                        {
+                            <p class="text-center gear-suggestion"> Pack Raingear and Waterproof Shoes</p>
+                        }
+                        else if (w.Forecast == "thunderstorms")
+                        {
+                            <p class="text-center gear-suggestion"> Seek Shelter; Avoid Hiking on Exposed Ridges</p>
+                        }
+
+
+                    </div>
                 </div>
-               </div>
+                @*<div class="col-xs-1"></div>*@
             }
         </div>
+    </div>
 
-        @*<div class="row">
+    <div class="row">
             <div class="col-xs-12 text-center">
                 @if ((Session["TempPref"] as String) == "Celsius")
             {
@@ -107,7 +113,7 @@
                     <a href="@Url.Action("ShowCelsius", "Park", new { id = Model.ParkCode })">Show Celsius</a>
                 }
             </div>
-        </div>*@
+        </div>
 
-    </div>
+</div>
 </div>

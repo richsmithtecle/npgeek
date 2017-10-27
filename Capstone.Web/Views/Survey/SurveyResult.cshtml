@@ -5,12 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>FavoriteParks</h2>
-@foreach(var s in Model)
-{
-    <h2>
-        @s.Total - @s.ParkCodeSurvey
-    </h2>
-
-}
-
+<div class="jumbotron survey-results-hero">
+    <h1 class="text-center">Thanks For Voting!</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>
+                <ol>
+                    @foreach (var s in Model)
+                    {
+                        <li>@s.ParkCodeSurvey - @s.Total Votes</li>
+                    }
+                </ol>
+            </h3>
+        </div>
+    </div>
+</div>
