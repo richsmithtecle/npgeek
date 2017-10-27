@@ -28,8 +28,15 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult TakeSurvey(Park completedSurvey)
         {
-            dal.SaveSurvey(completedSurvey);
-            return RedirectToAction("SurveyResult");
+            if (!ModelState.IsValid)
+            {
+                return View("TakeSurvey", completedSurvey);
+            }
+            else
+            {
+                dal.SaveSurvey(completedSurvey);
+                return RedirectToAction("SurveyResult");
+            }
         }
         public ActionResult SurveyResult(List<Park> model)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,12 +26,22 @@ namespace Capstone.Web.Models
         public int NumberOfAnimalSpecies { get; set; }
 
         public int SurveyId { get; set; }
+
+        [Required(ErrorMessage = "*Required")]
         public string ParkCodeSurvey { get; set; }
+
+        [Required(ErrorMessage = "*Required")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Invalid email")]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
+
+        [Required(ErrorMessage = "*Required")]
         public string StateSurvey { get; set; }
+
+        [Required(ErrorMessage = "*Required")]
         public string ActivityLevel { get; set; }
         public int Total { get; set; }
-        
+
 
         public List<SelectListItem> ParkNames
         {
@@ -38,6 +49,7 @@ namespace Capstone.Web.Models
             {
                 return new List<SelectListItem>()
                 {
+                    new SelectListItem() { Text = "-----SELECT-----", Value = "" },
                     new SelectListItem{Text = "Cuyahoga Valley National Park", Value = "CVNP" },
                     new SelectListItem{Text = "Everglades National Park", Value = "ENP"},
                     new SelectListItem{Text = "Grand Canyon National Park", Value = "GCNP"},
@@ -58,7 +70,7 @@ namespace Capstone.Web.Models
             {
                 return new List<SelectListItem>()
                 {
-
+                    new SelectListItem() { Text = "-----SELECT-----", Value = "" },
                     new SelectListItem() { Text = "Alabama", Value = "AL" },
                     new SelectListItem() { Text = "Alaska", Value = "AK" },
                     new SelectListItem() { Text = "Arizona", Value = "AZ" },
