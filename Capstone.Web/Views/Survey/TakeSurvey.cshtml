@@ -11,21 +11,30 @@
     <div>
         @Html.LabelFor(m => m.EmailAddress)
         @Html.TextBoxFor(m => m.EmailAddress)
+        @Html.ValidationMessageFor(m => m.EmailAddress)
     </div>
     <div>
         <label for="Park"> State of Residence</label>
         @Html.DropDownListFor(m => m.StateSurvey, Model.States)
+        @Html.ValidationMessageFor(m => m.StateSurvey)
+
+
     </div>
     <div>
         <label for="Park">Activity Level</label>
-        @Html.RadioButtonFor(m=> m.ActivityLevel, "inactive", false) inactive
+        @Html.RadioButtonFor(m => m.ActivityLevel, "inactive", false) inactive
         @Html.RadioButtonFor(m => m.ActivityLevel, "sedentary", false) sedentary
         @Html.RadioButtonFor(m => m.ActivityLevel, "active", false) active
         @Html.RadioButtonFor(m => m.ActivityLevel, "extremely active", false) extremely active
+        @Html.ValidationMessageFor(m => m.ActivityLevel)
+
+
     </div>
     <div>
-       <label for ="Park">Favorite Park</label>
+        <label for="Park">Favorite Park</label>
         @Html.DropDownListFor(m => m.ParkCodeSurvey, Model.ParkNames)
+        @Html.ValidationMessageFor(m => m.ParkCodeSurvey)
+
     </div>
 
     <button>Submit!</button>
