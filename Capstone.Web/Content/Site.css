@@ -67,7 +67,11 @@ textarea {
     padding-bottom: 10px;
 }
 
-
+@media (min-width : 768px) {
+    .ten-columns > .col-sm-2 {
+        width: 20% !important;
+    }
+}
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
