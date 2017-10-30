@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@*<h2>Index</h2>*@
 
 <div class="jumbotron index-hero">
     <h1 class="text-center">National parks system</h1>
@@ -20,19 +19,9 @@
                     <img class="park-img img-responsive img-rounded" src="@Url.Content("~/Content/img/" + p.ParkCode + ".jpg")" alt="@p.ParkName" />
                     <h4 class="text-center">@p.ParkName</h4>
                 </a>
-                <p class="text-justify">@p.ParkDescription</p>
+                <p class="text-justify parks">@p.ParkDescription</p>
             </div>
         }
     </div>
 </div>
 
-@*@foreach(var p in Model)
-{
-    <div>
-        <a href="@Url.Action("Detail", "Park", new {id = p.ParkCode})">
-            <div><img src="@Url.Content("~/Content/img/" + p.ParkCode + ".jpg")" alt="@p.ParkName" /></div>
-            <div>@p.ParkName</div>
-        </a>
-        <div>@p.ParkDescription</div>
-    </div>
-}*@

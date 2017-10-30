@@ -23,7 +23,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Vote", "TakeSurvey", "Survey", new { area = "" }, new { @class = "navbar-right" })</li>
+                    <li>@Html.ActionLink("Vote For Your Favorite Park", "TakeSurvey", "Survey", new { area = "" }, new { @class = "navbar-right" })</li>
                 </ul>
             </div>
         </div>
@@ -33,7 +33,11 @@
         @RenderBody()
         <hr />
         <footer>
-            <p class="text-center">&copy; @DateTime.Now.Year &bull; Eggers Smith &amp; Troy Productions</p>
+            <p class="text-center"><img style=height:45px; width: auto; src=~/Content/img/logo.png />
+            <br />&copy; @DateTime.Now.Year &bull;
+            <a class="est-productions" href="https://www.linkedin.com/in/lindsay-eggers/">Eggers </a>
+            <a class="est-productions" href="https://www.linkedin.com/in/richard-smith-ohio/"> Smith</a> &amp; 
+            <a class="est-productions" href="https://www.linkedin.com/in/samanthatroy1220/">Troy</a> Productions</p>
         </footer>
     @*</div>*@
 
